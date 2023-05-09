@@ -1,0 +1,36 @@
+{% extends "layout/layout.html" %}
+{% block content %}
+{% include "banners/login.html" %}
+
+<section id="aa-myaccount">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-myaccount-area">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="aa-myaccount-register">
+                                <h4>Register</h4>
+                                <form action="/register/" method="post" class="aa-login-form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <label for="name">name<span>*</span></label>
+                                    <input type="text" name="name" placeholder="name" id="name">
+                                    <label for="gender">gender <span>*</span></label>
+                                    <input type="text" placeholder="gender" id="gender" name="gender">
+                                    <label for="email">Username or Email address<span>*</span></label>
+                                    <input type="text" placeholder="Username or email" id="email" name="email" >
+                                    <label for="password">Password<span>*</span></label>
+                                    <input type="password" placeholder="Password" id="password" name="password">
+                                    <label for="image">image<span>*</span></label>
+                                    <input type="file" name="image" id="image">
+                                    <button type="submit" class="aa-browse-btn">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
