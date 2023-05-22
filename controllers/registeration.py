@@ -1,12 +1,12 @@
 import time
-from django.shortcuts import render_to_response ,redirect
+from django.shortcuts import render ,redirect
 from users.models import User
 from django.conf import settings
 import os
 
 def register(request):
     title="registrations"
-    return render_to_response("register/registeration.html", locals())
+    return render(request,"register/registeration.html", locals())
 def mkuser(request):
     g=request.POST.get("gender")
     name=request.POST.get("name")
@@ -21,9 +21,7 @@ def mkuser(request):
             destination.write(chunk)
     user=User(name=name,email=email,password=pass_wb,image=image_sub)
     user.save()
-    request.session["email"] = email
-    request.session["name"] = name
-    request.session["image"] = image_sub
+    request.session["user"] = {"name":name ,"email":email,"image":image_sub}
     response = redirect('/')
     return response
 def logout(request):
@@ -32,7 +30,7 @@ def logout(request):
     return response
 def login(request):
     title="registrations"
-    return render_to_response("register/login.html", locals())
+    return render(request,"register/login.html", locals())
 def do_login(request):
     email=request.POST.get("email")
     pass_wb=request.POST.get("password")

@@ -25,7 +25,7 @@ SECRET_KEY = '2#@6ujs0_pje@@tu25#6)i&8b@nnuf+5(253hss++pm!#x#e@h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["sociallaravel.com.eg","192.168.33.20","*"]
 
 # Application definition
 
@@ -36,10 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_elasticsearch_dsl",
     'users',
-    'questions'
+    "categories",
+    "products"
 ]
-
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': '192.168.125.20'
+    },
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,7 +85,7 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'dailyshop',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
@@ -131,3 +137,22 @@ STATIC_URL = '/public/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'public'),
 ]
+
+LOGGING = {
+'version': 1,
+'disable_existing_loggers': False,
+'handlers': {
+    'file': {
+        'level': 'ERROR',
+        'class': 'logging.FileHandler',
+        'filename': os.path.join(BASE_DIR,'APPNAME.log'),
+    },
+},
+'loggers': {
+    'django': {
+        'handlers': ['file'],
+        'level': 'ERROR',
+        'propagate': True,
+    },
+},
+}

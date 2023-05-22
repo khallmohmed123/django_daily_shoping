@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from controllers.home import home
+from django.conf.urls import *
+from controllers.home import *
 from controllers.registeration import *
-
+from controllers.database import *
+from controllers.category import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",home),
@@ -26,5 +28,10 @@ urlpatterns = [
     path("register/",mkuser),
     path("logout/",logout),
     path("do_login/",do_login),
+    path("loaddata_base/",do_laod_data),
+    path("category/<int:id>",search_category),
 
 ]
+# handler400 = Not_found
+# handler404 = Not_found
+# handler500 = Not_found

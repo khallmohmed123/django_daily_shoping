@@ -1,4 +1,37 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
+from categories.models import Category
+from products.models import *
+from controllers.view_helper import *
 def home(request):
     title="shop seekers"
-    return render_to_response("index.html", locals())
+    categories = load_featured_products()
+    nav=categories
+    return render(request,"index.html", locals())
+def Not_found(request,exception):
+    title="shop seekers"
+    return render(request,"static/404.html", locals())
+def load_featured_products():
+    items_node_array=[]
+    categories = Category.objects.filter(is_parent=1)
+    for i in categories:
+        nodes_str=""
+        items_node_array.append(items.open_li()+items.a(href="category/{}".format(i.id),content="{} {}".format(i.name,items.span(span_class="caret"))))
+        recurse(i.id,node_str=items_node_array)
+        items_node_array.append(items.colse_li())
+    return items_node_array
+def recurse(id,node_str):
+    try:
+        sub=Category.objects.filter(parent_id=id).all()
+        if len(sub) == 0 :
+            raise(Category.DoesNotExist)
+        node_str.append(items.open_ul(ul_class="dropdown-menu"))
+        for i in sub:
+            node_str.append(items.open_li()+items.a(href="category/{}".format(i.id),content="{} {}".format(i.name,items.span(span_class="caret"))))
+            recurse(i.id,node_str)
+            node_str.append(items.colse_li())
+        node_str.append(items.close_ul())
+    except Category.DoesNotExist:
+        return ""
+    except:
+        return ""
+    return node_str

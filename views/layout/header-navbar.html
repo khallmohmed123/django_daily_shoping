@@ -109,6 +109,7 @@
             {% endif %}
             <div class="aa-header-top-right">
               <ul class="aa-head-top-nav-right">
+                <li><a href="/loaddata_base">load data to database</a> </li>
                 <li><a href="/account">My Account</a></li>
                 <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                 <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
@@ -237,8 +238,8 @@
         <div class="navbar-collapse collapse">
           <!-- Left nav -->
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li>
+            <li><a href="/">Home</a></li>
+            <!-- <li>
               <a href="#">Men <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Casual</a></li>
@@ -338,7 +339,10 @@
                 <li><a href="#">Accesories</a></li>
               </ul>
             </li>
-            <li><a href="#">Furniture</a></li>
+            <li><a href="#">Furniture</a></li> -->
+            {% for i in nav %}
+              {{ i | safe }}
+            {% endfor %}
             <li>
               <a href="blog-archive.html">Blog <span class="caret"></span></a>
               <ul class="dropdown-menu">

@@ -1,0 +1,86 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 8, in home
+    categories = load_featured_products()
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 21, in load_featured_products
+    recurse(tree,i.id,node_str=items_node_array)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 27, in recurse
+    raise Exception(Category.DoesNotExist)
+Exception: <class 'categories.models.Category.DoesNotExist'>
+"GET / HTTP/1.0" 500 70631
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 8, in home
+    categories = load_featured_products()
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 21, in load_featured_products
+    recurse(tree,i.id,node_str=items_node_array)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 27, in recurse
+    raise Exception("sdfgsadgfafasasf")
+Exception: sdfgsadgfafasasf
+"GET / HTTP/1.0" 500 70468
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 27, in recurse
+    raise Exception("sdfgsadgfafasasf")
+Exception: sdfgsadgfafasasf
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 8, in home
+    categories = load_featured_products()
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 21, in load_featured_products
+    recurse(tree,i.id,node_str=items_node_array)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 36, in recurse
+    except all:
+TypeError: catching classes that do not inherit from BaseException is not allowed
+"GET / HTTP/1.0" 500 75052
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 27, in recurse
+    raise Exception(Category.DoesNotExist)
+Exception: <class 'categories.models.Category.DoesNotExist'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 8, in home
+    categories = load_featured_products()
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 21, in load_featured_products
+    recurse(tree,i.id,node_str=items_node_array)
+  File "/var/www/code/python_itegrations/Django/django_daily_shoping/controllers/home.py", line 36, in recurse
+    except all:
+TypeError: catching classes that do not inherit from BaseException is not allowed
+"GET / HTTP/1.0" 500 75129
+Internal Server Error: /category/645
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: search_category() got an unexpected keyword argument 'id'
+"GET /category/645 HTTP/1.0" 500 56517
+Internal Server Error: /category/645
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/dist-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: search_category() got an unexpected keyword argument 'id'
+"GET /category/645 HTTP/1.0" 500 56517
