@@ -2,6 +2,7 @@ from django.shortcuts import render
 from categories.models import Category
 from products.models import *
 from controllers.view_helper import *
+import re
 def home(request):
     title="shop seekers"
     categories = load_featured_products()
@@ -23,6 +24,10 @@ def recurse(id,node_str):
     try:
         sub=Category.objects.filter(parent_id=id).all()
         if len(sub) == 0 :
+            pattern = "<[ ]*span.*class=.*caret.*span[ ]*>"
+            string_val=node_str[-1]
+            string_val = re.sub(pattern,"",string_val)
+            node_str[-1]=string_val
             raise(Category.DoesNotExist)
         node_str.append(items.open_ul(ul_class="dropdown-menu"))
         for i in sub:
