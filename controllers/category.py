@@ -7,7 +7,7 @@ from products.models import *
 
 def search_category(request,id):
     categories=load_featured_products(id)
-    productsss=Product.objects.filter(category_id__in=categories).distinct()
+    productsss=Product.objects.filter(category_id__in=categories).distinct().order_by('id')
     paginator=Paginator(productsss, 25)
     page_obj = paginator.get_page(1)
     context={"products":page_obj.object_list,"paginatios":page_obj}
