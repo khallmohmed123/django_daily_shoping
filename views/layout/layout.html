@@ -63,8 +63,29 @@
 <script type="text/javascript" src="{% static  'js/nouislider.js'%}"></script>
 <!-- Custom js -->
 <script src="{% static  'js/custom.js'%}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 {% block scripts %}{% endblock %}
 </body>
+<script>
+    $('.lazy-load').lazyload({
+        effect: 'fadeIn'
+    });
+    $("img").error(function(){
+        if ($(this).attr("data-srcset")==undefined)
+            return
+        var srcc=$(this).attr("data-srcset").replace(/\s+/g,"").split(",")
+        console.log(srcc)
+        srcc.forEach(e=>{
+            if (e.length==0)
+                return
+            $.ajax({
+                "url":"",
 
+            })
+            console.log(e)
+        })
+        //
+        // $(this).attr("src",)
+    })
+</script>
 </html>

@@ -4,13 +4,20 @@ from categories.models import Category
 from products.models import *
 from categories.models import Category
 from products.models import *
+import controllers.navigation_dynamic as navController
 
-def search_category(request,id):
+def search_category(request,id,page):
+    if isinstance(page,type(None)):
+        page=1
+    else:
+        page=int(page.replace("/",""))
+    url_page="/category/{}/".format(id)
     categories=load_featured_products(id)
     productsss=Product.objects.filter(category_id__in=categories).distinct().order_by('id')
     paginator=Paginator(productsss, 25)
-    page_obj = paginator.get_page(1)
-    context={"products":page_obj.object_list,"paginatios":page_obj}
+    page_obj = paginator.get_page(page)
+    nav = navController.load_featured_products()
+    context={"products":page_obj.object_list,"paginatios":page_obj,"url_page":url_page,"nav":nav}
     return render(request,"categories/search.html", context)
 def load_featured_products(id):
     items_node_array=[]

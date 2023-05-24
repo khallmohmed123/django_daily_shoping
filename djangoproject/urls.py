@@ -29,7 +29,7 @@ urlpatterns = [
     path("logout/",logout),
     path("do_login/",do_login),
     path("loaddata_base/",do_laod_data),
-    path("category/<int:id>",search_category),
+    url(r"^category/([0-9]+)(/[0-9]+)?/$",search_category),
 
 ]
 # handler400 = Not_found
