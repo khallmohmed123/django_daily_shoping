@@ -1,7 +1,6 @@
 from controllers.view_helper import *
 from categories.models import Category
 import re
-import socket
 
 def load_featured_products():
     items_node_array=[]
@@ -23,7 +22,7 @@ def recurse(id,node_str):
             raise(Category.DoesNotExist)
         node_str.append(items.open_ul(ul_class="dropdown-menu"))
         for i in sub:
-            node_str.append(items.open_li()+items.a(href="{}/category/{}".format("http://192.168.33.180/",i.id),content="{} {}".format(i.name,items.span(span_class="caret"))))
+            node_str.append(items.open_li()+items.a(href="{}/category/{}".format("http://192.168.33.180",i.id),content="{} {}".format(i.name,items.span(span_class="caret"))))
             recurse(i.id,node_str)
             node_str.append(items.colse_li())
         node_str.append(items.close_ul())

@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from categories.models import Category
 from products.models import *
-from categories.models import Category
-from products.models import *
 import controllers.navigation_dynamic as navController
 
 def search_category(request,id,page):

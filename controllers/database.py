@@ -6,7 +6,6 @@ from decimal import Decimal, DecimalException
 import os
 import csv
 import json
-# main_categories=["Clothing","Women's Clothing"]
 def do_laod_data(request):
     data=os.path.join(settings.BASE_DIR,"public/data_set/flipkart_com-ecommerce_sample.csv")
     with open(data) as file:
@@ -70,12 +69,15 @@ def do_laod_data(request):
                 )
             product.save()
             if(len(product_specifications)>0):
-                json_object = json.loads(product_specifications)
-                if type(json_object["product_specification"]) is list :
-                    product_specifications=json_object["product_specification"]
-                else:
-                    product_specifications=[json_object["product_specification"]]
-                make_specifications_product(product,product_specifications)
+                try:
+                    json_object = json.loads(product_specifications)
+                    if type(json_object["product_specification"]) is list :
+                        product_specifications=json_object["product_specification"]
+                    else:
+                        product_specifications=[json_object["product_specification"]]
+                    make_specifications_product(product,product_specifications)
+                except:
+                    pass
             make_images_products(product,product_images_obj)
     return
 def price_validation(money):

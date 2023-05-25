@@ -20,6 +20,8 @@ from controllers.home import *
 from controllers.registeration import *
 from controllers.database import *
 from controllers.category import *
+from controllers.products import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",home),
@@ -30,6 +32,7 @@ urlpatterns = [
     path("do_login/",do_login),
     path("loaddata_base/",do_laod_data),
     url(r"^category/([0-9]+)(/[0-9]+)?/$",search_category),
+    url(r"^product/preview/([A-Za-z0-9]+)/$",single_product),
 
 ]
 # handler400 = Not_found
