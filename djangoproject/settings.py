@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 ELASTICSEARCH_DSL={
     'default': {
-        'hosts': '192.168.125.20'
+        'hosts': 'https://e419a74b016847369bb61354b91de9d8.us-central1.gcp.cloud.es.io:9243'
     },
 }
 MIDDLEWARE = [
@@ -129,7 +129,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+IP_SERVER="http://192.168.33.20"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 

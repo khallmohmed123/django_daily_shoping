@@ -3,6 +3,7 @@ from categories.models import Category
 from products.models import *
 import controllers.navigation_dynamic as navController
 from controllers.view_helper import *
+from django.conf import settings
 
 def single_product(request,uid):
     productsss=Product.objects.filter(uniq_id=uid)
@@ -23,9 +24,9 @@ def get_parents_categories(id):
 def make_sub_categories(categories):
     response=""
     for i in categories[:-1]:
-        response+=items.open_li()+items.a(href="{}/category/{}".format("http://192.168.33.180",i["id"]),content=i["name"])+items.colse_li()
+        response+=items.open_li()+items.a(href="{}/category/{}".format(settings.IP_SERVER,i["id"]),content=i["name"])+items.colse_li()
     last=categories[-1]
-    response+=items.open_li(li_class="active")+items.a(href="{}/category/{}".format("http://192.168.33.180",last["id"]),content=last["name"])+items.colse_li()
+    response+=items.open_li(li_class="active")+items.a(href="{}/category/{}".format(settings.IP_SERVER,last["id"]),content=last["name"])+items.colse_li()
     return response
 def related_ads(id):
     products=Product.objects.filter(category_id=id)

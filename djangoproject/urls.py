@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from django.conf.urls import *
 from controllers.home import *
 from controllers.registeration import *
@@ -31,8 +31,8 @@ urlpatterns = [
     path("logout/",logout),
     path("do_login/",do_login),
     path("loaddata_base/",do_laod_data),
-    url(r"^category/([0-9]+)(/[0-9]+)?/$",search_category),
-    url(r"^product/preview/([A-Za-z0-9]+)/$",single_product),
+    re_path(r"^category/([0-9]+)(/[0-9]+)?/$",search_category),
+    re_path(r"^product/preview/([A-Za-z0-9]+)/$",single_product),
 
 ]
 # handler400 = Not_found
